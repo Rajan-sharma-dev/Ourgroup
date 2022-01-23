@@ -20,10 +20,6 @@ var allowCrossDomain = function(req, res, next) {
 }
 app.use(allowCrossDomain)
 
-
-
-
-
 app.listen(process.env.PORT,()=>{
     console.log(`Server running at port no ${process.env.PORT}`)
 })
