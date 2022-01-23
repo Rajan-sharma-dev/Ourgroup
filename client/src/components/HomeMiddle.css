@@ -8,46 +8,94 @@
     height: 100vh;
     display: flex;
 }
-.home-middle .middle-right, .home-middle .middle-left{
+
+.home-middle .sign-in, .home-middle .middle-left{
     width: 50%;
 }
-.middle-right{
-    background-color: #B9C0FD1A;
-}
-.big-logo{
-    width: 70%;
-    height: 31vh;
-    margin: 15vh auto 0 auto;
-    color: #5861AE;
-    background-color: #000;
-}
-.big-logo h1{
-    font-size: 80%;
-    width: 100%;
-    height: auto;
-    background-color: aquamarine;
+.middle-left{
+    background-color: #fff;
+    display: grid;
+    height: 100%;
+    place-items: center;
 }
 .middle-left p{
-    text-align: left;
-    font: 20px/26px Avenir;
-    font-family: serif;
-    letter-spacing: 0.8px;
-    color: #565657;
-    text-transform: capitalize;
-    opacity: 1;
-    margin-left: 230px;
+    font: normal normal normal 20px/26px Avenir;
+    margin-top: -35vh;
+    margin-right: 10vw;
+}
+.big-logo{
+    max-width: 60%;
+    height: 30vh;
+    margin-top: 10vh;
+    /* background-color: black; */
+}
+.big-logo h1{
+    font-size: 5rem;
+    color: #5861AE;
+    float: left;
 }
 
 .register-div{
-    margin: 10vh auto 2vh auto;
-    width: 45%;
-    background-color: coral;
+    /* background-color: grey; */
+    margin-top: -40vh;
+    margin-right: 19vw;
+}
+.register-div h4{
+    font: normal normal normal 16px/26px Avenir;
+    opacity: .8;
+    text-transform: capitalize;
+}
+.register-div button{
+    float: left;
+    border: 2px solid #4552C1;
+    border-radius: 4px;
+    padding: 4px 12px;
+    color: #4552C1;
+    letter-spacing: 0.3px;
+    margin-top: 1rem;
+}
+.sign-in {
+    display: flex;
+    flex-direction: column;
+    padding: 10%;
+    background: #B9C0FD1A 0% 0% no-repeat padding-box;
+}
+.sign-in h2{
+    text-align: left;
+    color: #4552C1;
+    letter-spacing: 1.28px;
+    text-transform: uppercase;
+    font: normal normal medium 32px/60px Avenir;
+}
+.sign-in .input-field{
+    margin-top: 10vh;
     display: flex;
     flex-direction: column;
 }
-.register-div h4{
+.sign-in .input-field input{
+    border: none;
+    border-bottom: 1px solid #77838F;
+    margin-bottom: 3vh;
+    color: #77838F;
+    font: normal normal normal 17px/27px Open Sans;
     text-align: left;
+    outline: none;
+    background-color: #B9C0FD1A;
 }
-.register-div button{
-        margin-right: 75%;
+
+.sign-in #forgot{
+    float: right;
+    text-decoration: none;
+    margin-left: 21vw;
+}
+
+.sign-in button{
+    margin: 10vh auto 0 auto;
+    background: #4552C1 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    border: none;
+    color: #fff;
+    width: 120px;
+    height: 40px;
+    cursor: pointer;
 }
