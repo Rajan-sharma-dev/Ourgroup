@@ -40,8 +40,10 @@ const authenticateToken = (req, res, next) => {
                 return res.status(403).send(err.message)
             }
             else {
+
                 User.find({ _id: userDet.userID}).then(result => {
                     req.user = userDet
+
                     console.log("i am in inside")
                     
                     next()
@@ -57,26 +59,29 @@ const authenticateToken = (req, res, next) => {
 
 router.post("/addOrder",authenticateToken,async(req,res)=>{
     console.log(req.body)
+    console.log(req.user._id)
     
     try{
         const addingnewOrder=new Order({
             order_id:req.body.order_id,
-            ser_id:req.body.ser_id,
+            user_id:req.user._id,
             details:req.body.details,
             total_quantity:req.body.total_quantity,
             total_price: req.body.total_price,
             status: req.body.status,
             address: req.body.address,
             timestamps: true 
+            
         })
         
         console.log(addingnewOrder,"yha hu")
 
-        const dadasave=await addingnewOrder.save()
-        console.log(dadasave)
+        addingnewOrder.save().then((data)=>{console.log(data)}).catch((err)=>{
+            console.log(err)})
+        
         res.status(200).json({
             
-            data:dadasave
+            data:"saved"
         })
 
     }catch(err){

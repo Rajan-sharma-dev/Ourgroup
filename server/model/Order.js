@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 console.log("i am here also")
 const OrderSchema = mongoose.Schema(
   {
-    order_id: { type: String, required: true },
+    order_id: { type: String },
     user_id: {type: mongoose.Schema.Types.ObjectId,ref: "Userins"},
     details: {type:String},
     total_quantity: { type: Number },
@@ -11,11 +11,11 @@ const OrderSchema = mongoose.Schema(
       type: String,
       
       default: "Ready to Pick Up",
-      required: true,
+    
     },
     address: { type: String },
   },
-  { timestamps: true }
+
 );
 
 const order = mongoose.model("order", OrderSchema);

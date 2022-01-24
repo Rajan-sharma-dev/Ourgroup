@@ -49,6 +49,7 @@ router.post("/login",async(req,res)=>{
         if(!email || !password){
             res.json({message:"empty"})
         }
+        
         const userLogin=await User.findOne({email:email})
         console.log("userlogin")
         if(userLogin){
