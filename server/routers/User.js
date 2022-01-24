@@ -5,7 +5,14 @@ const bodyParser = require('body-parser');
 const app=express()
 app.use(bodyParser());
 const router=express.Router()
+<<<<<<< HEAD
 const User=require('../model/user')
+=======
+// console.log("create")
+
+const User=require('../model/user')
+
+>>>>>>> 9321edee979293d89141c18858a07522a24b40da
 router.post('/registers',async(req,res)=>{
    
     const { name,email,phone,password,cpassword,pincode,state,district,address } =req.body
@@ -13,7 +20,6 @@ router.post('/registers',async(req,res)=>{
              res.json({status:"failed",message:"invalid"})
         }
     try{
-        
         const userExist =await User.findOne({email:email})
       
         if(userExist){
@@ -38,7 +44,6 @@ router.post('/registers',async(req,res)=>{
         else{
             res.json({status:"failed",message:"invalid credentials"})
         }
-
     }
     catch(err){
         res.json({status:"failed",message:"err.message"})
@@ -69,22 +74,20 @@ router.post("/login",async(req,res)=>{
                 expires:new Date(Date.now()+ 25892000000),
                 httpOnly:true
             })
+<<<<<<< HEAD
+=======
+        if(!isCheck){
+            res.json({message:"Invalid password"})
+        }else{
+>>>>>>> 9321edee979293d89141c18858a07522a24b40da
             res.json("Login Successful")
         }
-
-
         }else{
             res.json({message:"Invalid Email"})
         }
-        
-        
-                
     }catch(err){
         console.log(err)
     }
 })
-
-
-
 
 module.exports = router;

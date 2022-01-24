@@ -1,10 +1,7 @@
 //import "./register.css"
+import "./register.css"
 import react, { useState } from "react";
-
-
-
 const Registration = () => {
-    
     const [user, setUser] = useState({
         name: "", email: "", phone: "",  password: "", cpassword: "", pincode: "", state: "", district: "", address: ""
     })
@@ -14,7 +11,6 @@ const Registration = () => {
         name = e.target.name
         value = e.target.value
         setUser({...user, [name]: value })
-
     }
     const PostData=async(e)=>{
         try{
@@ -23,15 +19,11 @@ const Registration = () => {
         const {name,email,phone,password,cpassword,pincode,state,district,address} =user
         const response = await fetch("/registers",{
             method:'POST',
-          
             headers:{
                 'Content-Type':'application/json'
-            },
-           
-           
+            },          
             body:JSON.stringify({
                 name,email,phone,password,cpassword,pincode,state,district,address
-                
             })
         })
         if(response.status===200){
@@ -40,10 +32,7 @@ const Registration = () => {
         }
         catch(e){
             alert("failed",e)
-
         }
-
-
     }
     return (<>
         <div className="register">
@@ -58,7 +47,6 @@ const Registration = () => {
                     <p>Already Have Acount</p>
                     <button>Sign In</button>
                 </div>
-
             </div>
             <div className="register-2">
                 <h1>REGISTER</h1>
@@ -103,15 +91,12 @@ const Registration = () => {
                                 <h1>Password</h1>
                                 <input onChange={handleInputs} type="text" name="password" value={user.password} />
                             </div>
-
                         </div>
                         <div className="form-group-3">
-
                             <div className="form-gropu-3-b">
                                 <h1> Confirm password</h1>
                                 <input onChange={handleInputs} type="text" name="cpassword" value={user.cpassword} />
                             </div>
-
                         </div>
                         <div className="checkbox">
                             <label><input type="checkbox" value="" /><u> I agree to Terms & Condition, receiving marketing and promotional materials</u></label>
@@ -119,17 +104,26 @@ const Registration = () => {
                         <div className="click">
                               <input type="submit" name="signup" onClick={PostData} id="signup" className="form-submit" value="Register" />
                         </div>
-
-
-
                     </form>
                 </div>
             </div>
-
         </div>
-
     </>)
-
 }
-
 export default Registration
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -10,8 +10,6 @@ const Order = () => {
       <h3>No order Available</h3>
       <button className='btn-1'>Create</button>
     </div>
-
-
   </div>)
 };
 
