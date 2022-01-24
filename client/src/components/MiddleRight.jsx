@@ -6,8 +6,9 @@ const MiddleRight = () => {
   
   const [email,setEmail]=useState()
   const [password,setPassword]=useState()
-  const detailsSubmit=async()=>{
+  const detailsSubmit=async(e)=>{
     try{
+      e.preventDefault()
       
       const response= await fetch('/login',{
         method:'POST',
@@ -22,8 +23,12 @@ const MiddleRight = () => {
       }
 
       )
+      if(response.status===200){
+        console.log("sucessfully login")
+    }
 
     }catch(err){
+      alert("unable login plz check ur details")
 
     }
     

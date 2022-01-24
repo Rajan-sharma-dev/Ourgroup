@@ -42,7 +42,7 @@ router.post('/registers',async(req,res)=>{
 router.post("/login",async(req,res)=>{
     try{
         let token
-        const { email ,password } = req.body
+        const { email ,password } = await req.body
         console.log(req.body)
         console.log(email,password)
         if(!email || !password){
