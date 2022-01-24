@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 
 
@@ -7,15 +8,14 @@ const MiddleRight = () => {
   const [password,setPassword]=useState()
   const detailsSubmit=async()=>{
     try{
+      
       const response= await fetch('/login',{
         method:'POST',
-          
-            headers:{
-                'Content-Type':'application/json'
+        headers:{
+              'Content-Type':'application/json'
             },
             body:JSON.stringify({
-              "email": email,
-              "password":password
+              email,password
               
           })
 

@@ -6,7 +6,8 @@ const app=express()
 app.use(bodyParser());
 const router=express.Router()
 // console.log("create")
-const User=require('../model/user')
+const User=require('../model/user');
+const e = require("cors");
 router.post('/registers',async(req,res)=>{
     // console.log(req.body)
     const { name,email,phone,password,cpassword,pincode,state,district,address } =req.body
@@ -42,10 +43,13 @@ router.post("/login",async(req,res)=>{
     try{
         let token
         const { email ,password } = req.body
+        console.log(req.body)
+        console.log(email,password)
         if(!email || !password){
             res.json({message:"empty"})
         }
         const userLogin=await User.findOne({email:email})
+        console.log(userLogin)
         if(userLogin){
             const isCheck= await bcrypt.compare(password,userLogin.password)
             token=await userLogin.generateAuthToken()
