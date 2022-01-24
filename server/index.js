@@ -2,14 +2,16 @@ const express=require('express')
 const app=express()
 const bodypaser=require('body-parser')
 app.use(bodypaser())
+app.use(express.urlencoded({ extended: true }))
 
 const dotenv=require('dotenv')
 const userRoutes=require("./routers/User");
+const dataRoutes=require('./routers/order')
 dotenv.config({path:'./config.env'})
 var cors = require('cors');
 app.use(cors());
 app.use(userRoutes);
-
+app.use(dataRoutes)
 
 
 require("./database/connectionwithdb")

@@ -43,8 +43,8 @@ router.post("/login",async(req,res)=>{
     const { email ,password } =  req.body
     console.log(req.body)
     try{
-        let token
-        console.log(req.body)
+     
+        ////console.log(req.body)
         console.log(email,password)
         if(!email || !password){
             res.json({message:"empty"})
@@ -53,19 +53,26 @@ router.post("/login",async(req,res)=>{
         console.log("userlogin")
         if(userLogin){
             const isCheck= await bcrypt.compare(password,userLogin.password)
+           
+        if(!isCheck){
+            
+            res.status(400).json({message:"Invalid password"})
+        }else{
             token=await userLogin.generateAuthToken()
+           
+            
+
+           
+            
             console.log(token)
             res.cookie("jwttokenmyji",token,{
                 expires:new Date(Date.now()+ 25892000000),
                 httpOnly:true
             })
-        if(!isCheck){
-            res.json({message:"Invalid password"})
-        }else{
-            res.json("Login Successful")
+            res.status(200).json("Login Successful")
         }
         }else{
-            res.json({message:"Invalid Email"})
+            res.status(300).json({message:"Invalid Email"})
         }
     }catch(err){
         console.log(err)

@@ -12,7 +12,7 @@ function App() {
           
           <Route path="/register"><RegisterNew /></Route>
           <Route path="/logins"><MiddleRight /></Route>
-          <Route path="/order" ><Order /></Route>
+          <Route path="/home" ><Home  /></Route>
         </Switch>
       </BrowserRouter>
     </div>

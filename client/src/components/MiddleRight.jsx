@@ -28,7 +28,7 @@ const MiddleRight = () => {
       console.log(response.status)
       if(response.status===200){
         
-        history.push("/order")
+        history.push("/home")
         console.log("sucessfully login")
     }
 
