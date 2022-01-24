@@ -5,14 +5,9 @@ const bodyParser = require('body-parser');
 const app=express()
 app.use(bodyParser());
 const router=express.Router()
-
-
-
 // console.log("create")
 
-
 const User=require('../model/user')
-
 
 router.post('/registers',async(req,res)=>{
     // console.log(req.body)
@@ -21,7 +16,6 @@ router.post('/registers',async(req,res)=>{
              res.json({status:"failed",message:"invalid"})
         }
     try{
-        
         const userExist =await User.findOne({email:email})
         // console.log(userExist)
         if(userExist){
@@ -46,7 +40,6 @@ router.post('/registers',async(req,res)=>{
         else{
             res.json({status:"failed",message:"invalid credentials"})
         }
-
     }
     catch(err){
         res.json({status:"failed",message:"err.message"})
@@ -69,26 +62,17 @@ router.post("/login",async(req,res)=>{
                 expires:new Date(Date.now()+ 25892000000),
                 httpOnly:true
             })
-
         if(!isCheck){
             res.json({message:"Invalid password"})
         }else{
             res.json("Login Successful")
         }
-
-
         }else{
             res.json({message:"Invalid Email"})
         }
-        
-        
-                
     }catch(err){
         console.log(err)
     }
 })
-
-
-
 
 module.exports = router;

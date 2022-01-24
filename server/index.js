@@ -14,7 +14,6 @@ app.get("/login",(req,res)=>{
     res.send("ok")
 })
 
-
 require("./database/connectionwithdb")
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', "*");
@@ -22,6 +21,7 @@ var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
 }
+
 app.use(allowCrossDomain)
 
 app.listen(process.env.PORT,()=>{
