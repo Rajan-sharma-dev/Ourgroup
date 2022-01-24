@@ -1,17 +1,19 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter,Switch,Route } from 'react-router-dom';
 import Home from './components/Home';
 import RegisterNew from './components/RegisterNew';
-import MiddleRight from './components/MiddleRight'; 
+import MiddleRight from './components/MiddleRight';
+import Order from './components/Order';
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/register" element={<RegisterNew />}></Route>
-          <Route path="/login" element={<MiddleRight />}></Route>
-        </Routes>
+        <Switch>
+          
+          <Route path="/register"><RegisterNew /></Route>
+          <Route path="/logins"><MiddleRight /></Route>
+          <Route path="/order" ><Order /></Route>
+        </Switch>
       </BrowserRouter>
     </div>
   );

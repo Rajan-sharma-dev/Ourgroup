@@ -10,9 +10,7 @@ var cors = require('cors');
 app.use(cors());
 app.use(userRoutes);
 
-app.get("/login",(req,res)=>{
-    res.send("ok")
-})
+
 
 require("./database/connectionwithdb")
 var allowCrossDomain = function(req, res, next) {

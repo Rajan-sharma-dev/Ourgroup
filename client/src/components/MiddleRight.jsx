@@ -1,8 +1,10 @@
 
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 
 const MiddleRight = () => {
+  const history = useHistory()
   
   const [email,setEmail]=useState()
   const [password,setPassword]=useState()
@@ -23,7 +25,10 @@ const MiddleRight = () => {
       }
 
       )
+      console.log(response.status)
       if(response.status===200){
+        
+        history.push("/order")
         console.log("sucessfully login")
     }
 

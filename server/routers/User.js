@@ -40,21 +40,22 @@ router.post('/registers',async(req,res)=>{
     }
 })
 router.post("/login",async(req,res)=>{
+    const { email ,password } =  req.body
+    console.log(req.body)
     try{
         let token
-        const { email ,password } = await req.body
         console.log(req.body)
         console.log(email,password)
         if(!email || !password){
             res.json({message:"empty"})
         }
         const userLogin=await User.findOne({email:email})
-        console.log(userLogin)
+        console.log("userlogin")
         if(userLogin){
             const isCheck= await bcrypt.compare(password,userLogin.password)
             token=await userLogin.generateAuthToken()
             console.log(token)
-            res.cookie("jwttoken",token,{
+            res.cookie("jwttokenmyji",token,{
                 expires:new Date(Date.now()+ 25892000000),
                 httpOnly:true
             })
