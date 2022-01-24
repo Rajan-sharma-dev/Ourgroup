@@ -90,4 +90,51 @@ router.post("/addOrder",authenticateToken,async(req,res)=>{
     }
 })
 
+router.get("/getOrder",authenticateToken,async(req,res)=>{
+    try{
+        console.log("i am here")
+        const result = await Order.find({user_id:req.user._id})
+        console.log(result)
+        res.status(200).json({
+            status:"success",
+            posts: result
+        })
+    }catch(err){
+        res.status(500).send("server error")
+
+    }
+})
+
+router.put("/updateOrder/:product_key",authenticateToken,async(req,res)=>{
+    console.log(req.params.product_key)
+    try{
+        Order.findOneAndUpdate({$and:[{_id:req.params.product_key}]},req.body,{new:true}).then((data)=>{
+            res.json({data:data})
+        }).catch((err)=>{
+            res.send("some error ji")
+        })
+        
+
+    }catch(err){
+        res.send("server error")
+
+    }
+
+})
+
+router.get("/getOrderAlone/:product_key",authenticateToken,(req,res)=>{
+    try{
+        Order.findOne({$and:[{_id:req.params.product_key}]}).then((data)=>{
+            res.json({data:data})
+        }).catch((err)=>{
+            res.send("some error ji")
+        })
+
+    }catch(err){
+        res.send("server error")
+
+    }
+
+})
+
 module.exports=router
