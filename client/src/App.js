@@ -1,20 +1,24 @@
 import './App.css';
-import { BrowserRouter,Switch,Route } from 'react-router-dom';
-import Home from './components/Home';
-import RegisterNew from './components/RegisterNew';
-import MiddleRight from './components/MiddleRight';
-import Order from './components/Order';
+import Registration from './components/Register';
+import RegisterNew from './components/RegisterNew'
+import {Route, Switch } from 'react-router-dom'
+import Home from './components/Home'
+import Homeji from './components/Homef';
+
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+    
+   
         <Switch>
-          
-          <Route path="/register"><RegisterNew /></Route>
-          <Route path="/logins"><MiddleRight /></Route>
-          <Route path="/home" ><Home  /></Route>
+        <Route  exact path="/"> <Home /></Route>
+        <Route exact path='/register'><RegisterNew /></Route>
+        <Route exact path="/homeji"><Homeji /></Route>
+
+        
         </Switch>
-      </BrowserRouter>
+      
+     
     </div>
   );
 }

@@ -3,6 +3,8 @@ const app=express()
 const bodypaser=require('body-parser')
 app.use(bodypaser())
 app.use(express.urlencoded({ extended: true }))
+const  cookie_parser=require('cookie-parser')
+app.use(cookie_parser('1234'))
 
 const dotenv=require('dotenv')
 const userRoutes=require("./routers/User");

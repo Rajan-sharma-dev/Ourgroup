@@ -8,35 +8,39 @@ const router=express.Router()
 // console.log("create")
 const User=require('../model/user');
 const e = require("cors");
+const res = require("express/lib/response");
 router.post('/registers',async(req,res)=>{
-    // console.log(req.body)
-    const { name,email,phone,password,cpassword,pincode,state,district,address } =req.body
-        if(!name || !email || !phone || !password || !cpassword || !pincode || !state || !district || !address){
-             res.json({status:"failed",message:"invalid"})
-        }
+     console.log(req.body)
+    const { name,email,phone,password,pincode,state,district,address } =req.body
+        
     try{
+        if(!name || !email || !phone || !password || !pincode || !state || !district || !address){
+            return res.status(304).json({status:"failed",message:"invalid"})
+       }
         const userExist =await User.findOne({email:email})
-        // console.log(userExist)
+         console.log(userExist)
         if(userExist){
-             res.json({message:"User Exist"})
+             return res.status(300).json({message:"User Exist"})
         }
-        // console.log(name,email,phone,password,cpassword,pincode,state,district,address)
+         console.log(name,email,phone,password,pincode,state,district,address)
         const hash= await bcrypt.hash(password,10)
-        const chash=await bcrypt.hash(cpassword,10)
+        
         // console.log(hash)
-        const user =  new User({name,email,phone,password:hash,cpassword:chash,state,district,address,pincode})
-        // console.log(user,'uuu')
-        const userRegister=  user.save()
+        const user =  new User({name,email,phone,password:hash,state,district,address,pincode})
+         console.log(user,'uuu')
+        user.save().then((data)=>{
+            res.status(200).json({status:'success',message:"sign up success",user:data})
+            console.log(data)
+        }).catch((err)=>{
+            res.status(405).json({status:"failed",message:"invalid credentials"})
+            console.log(err)
+        })
         // console.log(userRegister)
-        if(userRegister){
-            res.json({status:'success',message:"sign up success",user:userRegister})
-        }
-        else{
-            res.json({status:"failed",message:"invalid credentials"})
-        }
+   
+       
     }
     catch(err){
-        res.json({status:"failed",message:"err.message"})
+        res.status(300).json({status:"failed",message:"err.message"})
     }
 })
 router.post("/login",async(req,res)=>{
@@ -66,8 +70,8 @@ router.post("/login",async(req,res)=>{
            
             
             console.log(token)
-            res.cookie("jwttokenmyji",token,{
-                expires:new Date(Date.now()+ 25892000000),
+            res.cookie("jwttoken",token,{
+                expires:new Date(Date.now()+ 2589200000000),
                 httpOnly:true
             })
             res.status(200).json("Login Successful")
@@ -77,6 +81,19 @@ router.post("/login",async(req,res)=>{
         }
     }catch(err){
         console.log(err)
+        res.status(300).json(({message:"server error"}))
     }
 })
+
+
+const Authenticate=require("../middleware/authenticate")
+
+router.get("/Homehere", Authenticate,async(req,res)=>{
+    //console.log(`Hello i am verfied `)
+    res.send(req.rootUser)
+
+})
+
+
+
 module.exports = router;
