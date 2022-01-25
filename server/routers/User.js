@@ -90,6 +90,7 @@ const Authenticate=require("../middleware/authenticate")
 
 router.get("/Homehere", Authenticate,async(req,res)=>{
     //console.log(`Hello i am verfied `)
+    
     res.send(req.rootUser)
 
 })

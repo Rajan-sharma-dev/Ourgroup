@@ -6,7 +6,7 @@ const jwt=require("jsonwebtoken")
 router.use(express.json())
 
 const mongose=require('mongoose')
-
+const Authenticate=require("../middleware/authenticate")
 const app=express()
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -57,19 +57,19 @@ const authenticateToken = (req, res, next) => {
 }
 
 
-router.post("/addOrder",authenticateToken,async(req,res)=>{
+router.post("/addOrder",Authenticate,async(req,res)=>{
     console.log(req.body)
-    console.log(req.user._id)
+    console.log(res.req.rootUser)
     
     try{
         const addingnewOrder=new Order({
             order_id:req.body.order_id,
-            user_id:req.user._id,
+            user_id:res.req.rootUser._id,
             details:req.body.details,
             total_quantity:req.body.total_quantity,
             total_price: req.body.total_price,
             status: req.body.status,
-            address: req.body.address,
+            address: res.req.rootUser.address,
             timestamps: true 
             
         })
@@ -90,10 +90,10 @@ router.post("/addOrder",authenticateToken,async(req,res)=>{
     }
 })
 
-router.get("/getOrder",authenticateToken,async(req,res)=>{
+router.get("/getOrder",Authenticate,async(req,res)=>{
     try{
         console.log("i am here")
-        const result = await Order.find({user_id:req.user._id})
+        const result = await Order.find({user_id:res.req.rootUser._id})
         console.log(result)
         res.status(200).json({
             status:"success",

@@ -4,7 +4,10 @@ import { useHistory } from 'react-router-dom'
 import HomeMiddle from './HomeMiddle';
 import Refferal from './Refferal';
 import Footer from './Footer';
+import OrdersSidebar from "./Ordersidebar";
 import { Route, Switch } from 'react-router-dom'
+import Order from "./Order";
+import Rehna from "./CreateOrder";
 
 const Homeji = () => {
     const history = useHistory()
@@ -44,10 +47,11 @@ const Homeji = () => {
     }, [])
 
     return (<>
-        <h1>Rajan is here</h1>
-        <Switch>
-            <Route></Route>
-        </Switch>
+        
+     
+           <Rehna />
+
+      
 
     </>)
 }

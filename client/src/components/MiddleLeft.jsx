@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { NavLink } from 'react-router-dom';
 const MiddleLeft = () => {
   return <div className='middle-left'>
         <div className='big-logo'>
@@ -9,7 +9,7 @@ const MiddleLeft = () => {
         <p>Doorstep Wash & Dryclean Service</p>
         <div className='register-div'>
             <h4>Don't have an account?</h4>
-            <button>Register</button>
+            <button><NavLink to='/register'>Register</NavLink></button>
         </div>
     </div>;
 };
