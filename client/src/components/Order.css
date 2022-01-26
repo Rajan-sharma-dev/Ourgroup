@@ -1,64 +1,64 @@
-.orders-class{
-    background-color: aliceblue;
-    width: 100%;
-    height: 100vh;
-
+.Order {
+  display: flex;
+  /* flex-wrap: wrap; */
 }
-.header-order{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-
-}
-.middle-of-orders{
-   
-
-    margin: auto ;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  
-    height: 90vh;
-   
+.Order aside {
+  background-color: #5861ae;
+  display: flex;
+  flex-direction: column;
+  padding: 1em 1.5em;
 }
 
-.orders,.search-bar{
-    margin-top: 10px;
-    margin-left:  10px;
-
+aside img {
+  margin: 1em 0;
 }
-.search-bar input{
-    font-size: 20px;
-    padding-left: 5px;
+.tableHolder {
+  height: 75vh;
+  background-color: white;
+  text-align: center;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 2em;
 }
-.orders{
-    font-weight: 600;
-    font-size: 25px;
+.OrderContainer {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  width: -webkit-fill-available;
 }
-.orders span{
-    margin-left: 5px;
+.OrderHeader {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2em;
 }
-.btn-1{
-    border: blue 1px solid;
-    color: blue;
-    padding: 10px 30px;
+.OrderHeader input {
+  width: 15vw;
+  box-sizing: border-box;
+  border: none;
+  font-size: 1em;
+  border-bottom: 1px solid #77838f;
 }
-
-.search-bar{
-    margin-right: 10px;
-    border-bottom: 1px solid black;
+.emptyTable p {
+  color: #222b45;
+  font-family: open sans;
+  text-align: left;
+  letter-spacing: 0px;
+  color: #222b45;
+  opacity: 0.5;
+  margin-top: 50%;
 }
-.search-bar input{
-    border: none;
-    
-    background: none;
-    outline: none;
-}
-.middle-of-orders h3{
-    color: grey;
-}
-.wash-type{
-    display: flex;
-    align-items: center;
+.emptyTable button {
+  padding: 0.8vw 1vw;
+  background-color: white;
+  border: 1px solid #5861ae;
+  border-radius: 4px;
+  opacity: 1;
+  letter-spacing: 0px;
+  color: #5861ae;
+  opacity: 1;
 }

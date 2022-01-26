@@ -1,16 +1,54 @@
-import React from 'react';
-import "./Order.css"
-const Order = () => {
-  return (<div className='orders-class'>
-    <div className='header-order'>
-      <div className='orders '>Orders<span>| 0</span></div>
-      <div className='search-bar'><i class="fas fa-search"></i><input type="text" /> </div>
-    </div>
-    <div className='middle-of-orders'>
-      <h3>No order Available</h3>
-      <button className='btn-1'>Create</button>
-    </div>
-  </div>)
-};
+import res from 'express/lib/response';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+//import "./order.css";
+const Order=()=>{
+    const history=useNavigate()
+    const [data,setData]=useState([{address:"rajan"}])
+    const callHome = async () => {
+        try {
+           
+            const res = await fetch("/getOrder", {
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+
+                },
+                credentials: "include"
+            })
+
+            const data =await res.json()
+            setData(data)
+            console.log(res.status);
+            if (!res.status === 200) {
+                const error = new Error(res.error)
+                throw error
+            } else if (res.status === 401) {
+                history("/")
+
+            }
+
+        } catch (err) {
+            console.log(err, "he bhai he ")
+
+
+
+        }
+    }
+    //console.log(data)
+    useEffect(()=>{
+        callHome()
+
+    },[])
+   return(
+       <>
+      
+       </>
+
+    )
+    
+  
+}
 
 export default Order;

@@ -3,7 +3,7 @@ const express=require('express')
 const router= new express.Router()
 const bcrypt=require('bcrypt')
 const jwt=require("jsonwebtoken")
-router.use(express.json())
+
 
 const mongose=require('mongoose')
 const Authenticate=require("../middleware/authenticate")
@@ -95,10 +95,8 @@ router.get("/getOrder",Authenticate,async(req,res)=>{
         console.log("i am here")
         const result = await Order.find({user_id:res.req.rootUser._id})
         console.log(result)
-        res.status(200).json({
-            status:"success",
-            posts: result
-        })
+        res.status(200).json(result);
+
     }catch(err){
         res.status(500).send("server error")
 

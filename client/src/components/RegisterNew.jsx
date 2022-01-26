@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import './RegisterNew.css'
-import {useHistory} from 'react-router-dom'
+import './Modal.css'
+import {NavLink, useNavigate} from 'react-router-dom'
+import { Modal } from 'react-responsive-modal';
 
 const RegisterNew = () => {
-  const history =useHistory()
+  const history =useNavigate()
+  const [open,setOpend] =useState(false)
   const [user, setUser] = useState({
     name: "", email: "", phone: "", password: "", cpassword: "", pincode: "", state: "", district: "", address: ""
   })
@@ -30,7 +33,8 @@ const RegisterNew = () => {
       })
       console.log(response.status)
       if (response.status === 200) {
-        history.push("/")
+        //history.push("/")
+        setOpend(true)
 
         console.log("sucessfully register")
       }
@@ -63,6 +67,14 @@ const RegisterNew = () => {
       </div>
       <button onClick={PostData} >Register</button>
     </form>
+    <Modal  classNames={{
+      
+      modal: 'modal-register',
+     
+    }} open={open} onOverlayClick={()=>setOpend(false)} center >
+    <h1>Details has been submitted now move to login page</h1>
+    <NavLink to="/"><button onClick={()=>{setOpend(false)}}>login</button></NavLink>
+    </Modal>
   </div>;
 };
 

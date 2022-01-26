@@ -29,18 +29,18 @@ router.post('/registers',async(req,res)=>{
         const user =  new User({name,email,phone,password:hash,state,district,address,pincode})
          console.log(user,'uuu')
         user.save().then((data)=>{
-            res.status(200).json({status:'success',message:"sign up success",user:data})
-            console.log(data)
+            return res.status(200).json({status:'success',message:"sign up success",user:data})
+            //console.log(data)
         }).catch((err)=>{
-            res.status(405).json({status:"failed",message:"invalid credentials"})
-            console.log(err)
+            return res.status(405).json({status:"failed",message:"invalid credentials"})
+            //console.log(err)
         })
         // console.log(userRegister)
    
        
     }
     catch(err){
-        res.status(300).json({status:"failed",message:"err.message"})
+         return res.status(300).json({status:"failed",message:"err.message"})
     }
 })
 router.post("/login",async(req,res)=>{
@@ -51,7 +51,7 @@ router.post("/login",async(req,res)=>{
         ////console.log(req.body)
         console.log(email,password)
         if(!email || !password){
-            res.json({message:"empty"})
+            return res.status(309).json({message:"empty"})
         }
         
         const userLogin=await User.findOne({email:email})
@@ -74,14 +74,14 @@ router.post("/login",async(req,res)=>{
                 expires:new Date(Date.now()+ 2589200000000),
                 httpOnly:true
             })
-            res.status(200).json("Login Successful")
+            return res.status(200).json("Login Successful")
         }
         }else{
-            res.status(300).json({message:"Invalid Email"})
+            return res.status(300).json({message:"Invalid Email"})
         }
     }catch(err){
         console.log(err)
-        res.status(300).json(({message:"server error"}))
+        return res.status(300).json(({message:"server error"}))
     }
 })
 
@@ -90,8 +90,8 @@ const Authenticate=require("../middleware/authenticate")
 
 router.get("/Homehere", Authenticate,async(req,res)=>{
     //console.log(`Hello i am verfied `)
-    
-    res.send(req.rootUser)
+
+    res.json({data:req.rootUser})
 
 })
 

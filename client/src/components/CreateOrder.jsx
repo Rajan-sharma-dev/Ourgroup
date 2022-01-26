@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Rehna = () => {
+    const [data,setData]=useState()
     const callHome = async () => {
         try {
-
+           
             const res = await fetch("/getOrder", {
                 method: "GET",
                 headers: {
@@ -14,7 +15,10 @@ const Rehna = () => {
                 credentials: "include"
             })
 
-            //console.log(res)
+            const data =await res.json()
+            console.log(data[0].status)
+            setData(data[0].status)
+            //console.log(data)
             console.log(res.status);
             if (!res.status === 200) {
                 const error = new Error(res.error)
@@ -71,6 +75,7 @@ const Rehna = () => {
 
         <>
         <h1>Rajan is here</h1>
+        <p>{data}</p>
         <button onClick={PostData}>Click me</button>
         <button onClick={callHome}>Click me</button>
         

@@ -1,25 +1,33 @@
 import './App.css';
-import Registration from './components/Register';
-import RegisterNew from './components/RegisterNew'
-import {Route, Switch } from 'react-router-dom'
+
+
+import { Route } from 'react-router-dom'
 import Home from './components/Home'
 import Homeji from './components/Homef';
-
-
+import MainRegister from './components/Mainregister';
+import Order from './components/Order';
+import Store from './components/Store';
+import { Routes } from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-    
-   
-        <Switch>
-         <Route  exact path="/"> <Home /></Route>
-         <Route exact path="/homeji"><Homeji /></Route>
 
 
+      <Routes>
+        <Route exact path="/" element={<Home />}> </Route>
+        <Route exact path="/homeji" element={<Homeji />}>
+        <Route exact path="/homeji/order" element={<Order />} />
+        <Route exact path="/homeji/store" element={<Store />} />
         
-         </Switch>
-      
-     
+        </Route>
+        <Route exact path="/register" element={<MainRegister />}></Route>
+      </Routes>
+
+
+
+
+
+
     </div>
   );
 }
