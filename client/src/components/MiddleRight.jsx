@@ -25,15 +25,18 @@ const MiddleRight = () => {
       }
 
       )
-      console.log(response.status)
+      // console.log(response.status)
       if(response.status===200){
         
-        history.push("/homeji")
-        console.log("sucessfully login")
+        history.push("/order")
+        // console.log("sucessfully login")
+      }else{
+        // alert("unable to login")
+        alert(response.json())
     }
 
     }catch(err){
-      alert("unable login plz check ur details")
+      alert(err)
 
     }
     

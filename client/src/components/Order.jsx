@@ -4,6 +4,7 @@ const Order = () => {
   return (<div className='orders-class'>
     <div className='header-order'>
       <div className='orders '>Orders<span>| 0</span></div>
+      <button className='logout'>Logout</button>
       <div className='search-bar'><i class="fas fa-search"></i><input type="text" /> </div>
     </div>
     <div className='middle-of-orders'>

@@ -81,7 +81,7 @@ router.post("/login",async(req,res)=>{
         }
     }catch(err){
         console.log(err)
-        res.status(300).json(({message:"server error"}))
+        res.status(300).json({message:"server error"})
     }
 })
 
