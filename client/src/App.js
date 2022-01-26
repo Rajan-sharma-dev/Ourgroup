@@ -1,21 +1,21 @@
 import './App.css';
 
 
-import Registration from './components/Register';
-import RegisterNew from './components/RegisterNew'
-import {Route, Switch } from 'react-router-dom'
+
+
+import {Route, Routes } from 'react-router-dom'
 import Home from './components/Home'
 import Order from './components/Order'
 
 
 
-import { Route } from 'react-router-dom'
-import Home from './components/Home'
+
+
 import Homeji from './components/Homef';
 import MainRegister from './components/Mainregister';
-import Order from './components/Order';
+
 import Store from './components/Store';
-import { Routes } from 'react-router-dom';
+
 function App() {
   return (
     <div className="App">

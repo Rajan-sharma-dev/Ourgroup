@@ -81,11 +81,9 @@ router.post("/login",async(req,res)=>{
         }
     }catch(err){
         console.log(err)
-<<<<<<< HEAD
+
         return res.status(300).json(({message:"server error"}))
-=======
-        res.status(300).json({message:"server error"})
->>>>>>> af646f1ba67009a71bcff163b33338c664f2a7cf
+
     }
 })
 
