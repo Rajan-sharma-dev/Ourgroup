@@ -1,3 +1,4 @@
+
 import res from 'express/lib/response';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -42,13 +43,13 @@ const Order=()=>{
 
     },[])
    return(
-       <>
+       <div>
       
-       </>
+       </div>
 
     )
     
   
 }
 
-export default Order;
+export default Order

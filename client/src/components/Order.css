@@ -22,12 +22,8 @@ aside img {
   box-sizing: border-box;
   padding: 2em;
 }
-.OrderContainer {
-  display: flex;
-  box-sizing: border-box;
-  flex-direction: column;
-  width: -webkit-fill-available;
-}
+
+
 .OrderHeader {
   width: 100%;
   box-sizing: border-box;

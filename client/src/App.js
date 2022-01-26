@@ -1,6 +1,14 @@
 import './App.css';
 
 
+import Registration from './components/Register';
+import RegisterNew from './components/RegisterNew'
+import {Route, Switch } from 'react-router-dom'
+import Home from './components/Home'
+import Order from './components/Order'
+
+
+
 import { Route } from 'react-router-dom'
 import Home from './components/Home'
 import Homeji from './components/Homef';
@@ -12,6 +20,7 @@ function App() {
   return (
     <div className="App">
 
+        
 
       <Routes>
         <Route exact path="/" element={<Home />}> </Route>
