@@ -9,7 +9,7 @@ const MiddleLeft = () => {
         <p>Doorstep Wash & Dryclean Service</p>
         <div className='register-div'>
             <h4>Don't have an account?</h4>
-            <button><NavLink to='/register'>Register</NavLink></button>
+            <NavLink to='/register'><button>Register</button></NavLink>
         </div>
     </div>;
 };

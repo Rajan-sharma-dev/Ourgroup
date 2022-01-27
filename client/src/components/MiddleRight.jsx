@@ -25,9 +25,9 @@ const MiddleRight = () => {
       }
 
       )
-      // console.log(response.status)
+       console.log(response.status)
       if(response.status===200){
-        
+        history("/homeji")
 
     }
 
@@ -43,7 +43,7 @@ const MiddleRight = () => {
   return <div className='sign-in'>
     <h2>SIGN IN</h2>
     <div className='input-field'>
-    <form method='POST'>
+    <form method='POST' className='login-form'>
     <input type="text" placeholder='Mobile / Email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
     <input type="password" placeholder='Password' value={password} onChange={(e)=>setPassword(e.target.value)}/>
    

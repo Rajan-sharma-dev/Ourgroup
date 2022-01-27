@@ -1,5 +1,5 @@
 
-import res from 'express/lib/response';
+
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 //import "./order.css";
@@ -37,7 +37,7 @@ const Order=()=>{
 
         }
     }
-    //console.log(data)
+    console.log(data)
     useEffect(()=>{
         callHome()
 

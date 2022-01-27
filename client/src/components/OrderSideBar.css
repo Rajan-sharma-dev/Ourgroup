@@ -5,10 +5,11 @@
     /* height: 933px; */
     background: #5861AE 0% 0% no-repeat padding-box;
     /* display: flex; */ 
-    height: 100vh;
+    height: 89vh;
+  
     float: left;
     /* margin-top: 10vh; */
-    width: 5vw;
+    width: 4vw;
     
 }
 .image-icons{
@@ -18,17 +19,24 @@
     height: 10vh;
     width: 100%;
 }
-.img1,.img2,.img3{
+.side-bar .img1,.side-bar .img9,.side-bar .img3{
     padding-top: 4vh;
     cursor:pointer;
-}
-.img2{
-    background: white 100% 100%;
-    width: 4.8vw;
-    margin-right: 10vw;
-    align-self: left;
-    margin-top: 3vh;
-    margin-bottom: 1vh;
-    padding-bottom: 2.5vh;
+    width: 100%;
     
+   
+
+}
+.side-bar .img9 img{
+    background-color: white;
+    border-radius: 50%;
+    
+   
+}
+
+.side-items{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
